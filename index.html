@@ -131,7 +131,23 @@
                     <h4>Parceiro:</h4>
                     <p><strong>Impacto Visual</strong> – Transformamos imagem em resultado</p>
                 </div>
-                <form name="inscricao-evento" method="POST" data-netlify="true" class="form-inscricao" id="form-inscricao">
+              <form action="https://formsubmit.co/dadivabandeshelcia@gmail.com" method="POST" class="form-inscricao" id="form-inscricao">
+    <!-- Campos obrigatórios do FormSubmit -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://teusite.com/obrigado.html">
+    <input type="hidden" name="_subject" value="Nova inscrição no evento VES!">
+    
+    <!-- Teus campos com as classes do CSS -->
+    <div class="form-group">
+        <input type="text" name="nome" placeholder="Seu nome" required>
+    </div>
+    <div class="form-group">
+        <input type="email" name="email" placeholder="Seu e-mail" required>
+    </div>
+    
+    <button type="submit" class="btn-submit">Inscrever-me</button>
+</form>
+                <!-- <form name="inscricao-evento" method="POST" data-netlify="true" class="form-inscricao" id="form-inscricao">
                     <input type="hidden" name="form-name" value="inscricao-evento" />
                       <p class="hidden">
                          <label>Não preencher: <input name="bot-field" /></label>
@@ -143,7 +159,7 @@
                         <input type="email" name="email" placeholder="Seu e-mail" required>
                     </div>
                     <button type="submit" class="btn-submit">Inscrever-me</button>
-                </form>
+                </form> -->
             </div>
         </div>
     </section>
