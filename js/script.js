@@ -9,11 +9,14 @@ AOS.init({
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+}
 
+// Fechar menu ao clicar em um link
 document.querySelectorAll('.nav-menu a').forEach(link => {
     link.addEventListener('click', () => {
         hamburger.classList.remove('active');
@@ -21,7 +24,7 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
     });
 });
 
-// Smooth scroll
+// Smooth scroll para links internos
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -44,26 +47,30 @@ window.addEventListener('scroll', () => {
 
 // Progress bar
 const progressBar = document.getElementById('progress-bar');
-window.addEventListener('scroll', () => {
-    const winScroll = document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    progressBar.style.width = scrolled + '%';
-});
+if (progressBar) {
+    window.addEventListener('scroll', () => {
+        const winScroll = document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        progressBar.style.width = scrolled + '%';
+    });
+}
 
 // Back to top
 const backToTop = document.getElementById('back-to-top');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) {
-        backToTop.classList.add('visible');
-    } else {
-        backToTop.classList.remove('visible');
-    }
-});
+if (backToTop) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
 
-backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
 
 // Countdown
 const countdown = () => {
@@ -91,64 +98,76 @@ setInterval(countdown, 1000);
 
 // Partículas interativas
 const particlesContainer = document.getElementById('particles');
-const numParticles = 30;
+if (particlesContainer) {
+    const numParticles = 30;
 
-for (let i = 0; i < numParticles; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    particle.style.left = Math.random() * 100 + '%';
-    particle.style.top = Math.random() * 100 + '%';
-    particle.style.animationDuration = (5 + Math.random() * 5) + 's';
-    particle.style.animationDelay = Math.random() * 5 + 's';
-    particlesContainer.appendChild(particle);
+    for (let i = 0; i < numParticles; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDuration = (5 + Math.random() * 5) + 's';
+        particle.style.animationDelay = Math.random() * 5 + 's';
+        particlesContainer.appendChild(particle);
+    }
+
+    document.addEventListener('mousemove', (e) => {
+        const particles = document.querySelectorAll('.particle');
+        const mouseX = e.clientX / window.innerWidth;
+        const mouseY = e.clientY / window.innerHeight;
+
+        particles.forEach(part => {
+            const speed = 20;
+            const x = (mouseX - 0.5) * speed;
+            const y = (mouseY - 0.5) * speed;
+            part.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    });
 }
 
-document.addEventListener('mousemove', (e) => {
-    const particles = document.querySelectorAll('.particle');
-    const mouseX = e.clientX / window.innerWidth;
-    const mouseY = e.clientY / window.innerHeight;
-
-    particles.forEach(part => {
-        const speed = 20;
-        const x = (mouseX - 0.5) * speed;
-        const y = (mouseY - 0.5) * speed;
-        part.style.transform = `translate(${x}px, ${y}px)`;
-    });
-});
-
-// Validação simples do formulário
+// Validação visual do formulário (sem impedir o envio)
 const form = document.getElementById('form-inscricao');
-form.addEventListener('submit', (e) => {
-    const nome = form.nome.value.trim();
-    const email = form.email.value.trim();
-    let valid = true;
+if (form) {
+    form.addEventListener('submit', (e) => {
+        const nome = form.nome.value.trim();
+        const email = form.email.value.trim();
+        let hasError = false;
 
-    document.querySelectorAll('.form-group').forEach(g => g.classList.remove('error'));
-    document.querySelectorAll('.error-message').forEach(em => em.remove());
+        // Remover mensagens de erro anteriores
+        document.querySelectorAll('.form-group').forEach(g => g.classList.remove('error'));
+        document.querySelectorAll('.error-message').forEach(em => em.remove());
 
-    if (nome === '') {
-        showError(form.nome, 'Nome é obrigatório');
-        valid = false;
+        // Validar nome
+        if (nome === '') {
+            showError(form.nome, 'Nome é obrigatório');
+            hasError = true;
+        }
+
+        // Validar email
+        if (email === '') {
+            showError(form.email, 'E-mail é obrigatório');
+            hasError = true;
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
+            showError(form.email, 'E-mail inválido');
+            hasError = true;
+        }
+
+        // Se quiser impedir o envio em caso de erro, descomente a linha abaixo:
+        // if (hasError) e.preventDefault();
+
+        // Nota: Como o formulário tem campos com 'required', o navegador já impede o envio de campos vazios.
+        // Esta validação é apenas visual. O envio para a Netlify ocorrerá normalmente,
+        // a menos que você chame e.preventDefault().
+    });
+
+    function showError(input, message) {
+        const group = input.closest('.form-group');
+        if (group) {
+            group.classList.add('error');
+            const error = document.createElement('div');
+            error.className = 'error-message';
+            error.textContent = message;
+            group.appendChild(error);
+        }
     }
-
-    if (email === '') {
-        showError(form.email, 'E-mail é obrigatório');
-        valid = false;
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-        showError(form.email, 'E-mail inválido');
-        valid = false;
-    }
-
-    if (!valid) {
-        e.preventDefault();
-    }
-});
-
-function showError(input, message) {
-    const group = input.closest('.form-group');
-    group.classList.add('error');
-    const error = document.createElement('div');
-    error.className = 'error-message';
-    error.textContent = message;
-    group.appendChild(error);
 }
