@@ -116,15 +116,22 @@ document.addEventListener('mousemove', (e) => {
     });
 });
 
-// Validação simples do formulário
+// Validação e envio do formulário
 const form = document.getElementById('form-inscricao');
-form.addEventListener('submit', (e) => {
+const formSuccess = document.getElementById('form-success');
+const formError = document.getElementById('form-error');
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
     const nome = form.nome.value.trim();
     const email = form.email.value.trim();
     let valid = true;
 
     document.querySelectorAll('.form-group').forEach(g => g.classList.remove('error'));
     document.querySelectorAll('.error-message').forEach(em => em.remove());
+    formSuccess.style.display = 'none';
+    formError.style.display = 'none';
 
     if (nome === '') {
         showError(form.nome, 'Nome é obrigatório');
@@ -139,8 +146,30 @@ form.addEventListener('submit', (e) => {
         valid = false;
     }
 
-    if (!valid) {
-        e.preventDefault();
+    if (!valid) return;
+
+    const submitBtn = form.querySelector('.btn-submit');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+
+    try {
+        const response = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(new FormData(form)).toString()
+        });
+
+        if (response.ok) {
+            formSuccess.style.display = 'flex';
+            form.reset();
+        } else {
+            formError.style.display = 'flex';
+        }
+    } catch (err) {
+        formError.style.display = 'flex';
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Inscrever-me';
     }
 });
 

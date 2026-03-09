@@ -131,11 +131,12 @@
                     <h4>Parceiro:</h4>
                     <p><strong>Impacto Visual</strong> – Transformamos imagem em resultado</p>
                 </div>
-                <form name="inscricao-evento" method="POST" data-netlify="true" class="form-inscricao" id="form-inscricao">
+                <form name="inscricao-evento" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="form-inscricao" id="form-inscricao">
                     <input type="hidden" name="form-name" value="inscricao-evento" />
-                      <p class="hidden">
-                         <label>Não preencher: <input name="bot-field" /></label>
-                      </p>
+                    <input type="hidden" name="subject" value="Nova inscrição no evento VES - %{formName}" />
+                    <p style="display:none">
+                        <label>Não preencher: <input name="bot-field" /></label>
+                    </p>
                     <div class="form-group">
                         <input type="text" name="nome" placeholder="Seu nome" required>
                     </div>
@@ -143,6 +144,12 @@
                         <input type="email" name="email" placeholder="Seu e-mail" required>
                     </div>
                     <button type="submit" class="btn-submit">Inscrever-me</button>
+                    <div id="form-success" class="form-message form-message-success" style="display:none">
+                        <i class="fas fa-check-circle"></i> Inscrição realizada com sucesso! Obrigado por se inscrever.
+                    </div>
+                    <div id="form-error" class="form-message form-message-error" style="display:none">
+                        <i class="fas fa-exclamation-circle"></i> Ocorreu um erro. Por favor, tente novamente.
+                    </div>
                 </form>
             </div>
         </div>
