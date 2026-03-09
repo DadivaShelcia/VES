@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VES - Visionary Engineering Student</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="progress-bar"></div>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="image/img2.png" alt="VES Logo" class="logo-img">
+                <h1 class="logo-text" style="display: none;">VES</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#evento">Evento</a></li>
+                <li><a href="#parceiros">Parceiros</a></li>
+                <li><a href="#contactos">Contactos</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-video">
+            <video autoplay muted loop playsinline>
+                <source src="videos/hero-bg.mp4" type="video/mp4">
+            </video>
+            <div class="overlay"></div>
+        </div>
+        <div class="particles" id="particles"></div>
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
+            <img src="image/img2.png" alt="VES Logo" class="hero-logo">
+            <h1 class="hero-title">VISIONARY ENGINEERING STUDENT</h1>
+            <p class="hero-subtitle">Construa o futuro com a VES</p>
+            <a href="#evento" class="btn btn-hero">Garanta a sua vaga</a>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <span></span>
+        </div>
+    </section>
+
+    <section id="sobre" class="sobre">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-right"><span>Sobre</span> a VES</h2>
+            <div class="sobre-content">
+                <div class="sobre-text" data-aos="fade-right" data-aos-delay="100">
+                    <p>A VES é um projeto idealizado por um grupo de estudantes visionários com o propósito de impulsionar a visibilidade e protagonismo de estudantes de engenharia, com foco especial nas geociências e no setor de oil and gas.</p>
+                    <p>Sabemos que o setor é altamente competitivo e, muitas vezes, visto como inacessível ou instável por jovens estudantes. Por isso, a VES nasce com o compromisso de informar, orientar e motivar futuros profissionais, quebrando o medo do desemprego e mostrando que sim, é possível construir uma carreira sólida e promissora nesse ramo.</p>
+                    <p>Por meio de ações práticas, workshops, projetos colaborativos, conteúdos informativos e conexões com profissionais da indústria, a VES se posiciona como uma ponte entre o estudante e o mercado de trabalho.</p>
+                    <div class="pilares">
+                        <span class="pilar">VISIBILIDADE</span>
+                        <span class="pilar">INOVAÇÃO</span>
+                        <span class="pilar">SUSTENTABILIDADE</span>
+                    </div>
+                </div>
+                <div class="sobre-grafico" data-aos="fade-left" data-aos-delay="200">
+                    <div class="icon-card">
+                        <i class="fas fa-flask"></i>
+                        <h4>Pesquisa</h4>
+                    </div>
+                    <div class="icon-card">
+                        <i class="fas fa-oil-well"></i>
+                        <h4>Indústria</h4>
+                    </div>
+                    <div class="icon-card">
+                        <i class="fas fa-mountain"></i>
+                        <h4>Geociências</h4>
+                    </div>
+                    <div class="icon-card">
+                        <i class="fas fa-users"></i>
+                        <h4>Comunidade</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="evento" class="evento">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-left"><span>Próximo</span> Evento</h2>
+            <div class="evento-card" data-aos="flip-left" data-aos-duration="1200">
+                <h3>Mentoria de Visionárias</h3>
+                <p class="subtitulo">De estudante a profissional de sucesso!</p>
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item">
+                        <span class="days">00</span>
+                        <span>Dias</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="hours">00</span>
+                        <span>Horas</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="minutes">00</span>
+                        <span>Minutos</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="seconds">00</span>
+                        <span>Segundos</span>
+                    </div>
+                </div>
+                <div class="evento-info">
+                    <p><i class="fas fa-calendar-alt"></i> 13 de Março de 2026</p>
+                    <p><i class="fas fa-clock"></i> 10h – 12h</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Avenida Luther Rescova, Rotunda da Camama<br>Complexo Escolar Privado Girassol Polo 2</p>
+                    <p><i class="fas fa-tag"></i> Entrada Grátis</p>
+                </div>
+                <div class="evento-apoios">
+                    <h4>Apoios:</h4>
+                    <p>Direcção do Colégio Girassol</p>
+                </div>
+                <div class="evento-parceiro">
+                    <h4>Parceiro:</h4>
+                    <p><strong>Impacto Visual</strong> – Transformamos imagem em resultado</p>
+                </div>
+                <form name="inscricao-evento" method="POST" data-netlify="true" class="form-inscricao" id="form-inscricao">
+                    <input type="hidden" name="form-name" value="inscricao-evento" />
+                      <p class="hidden">
+                         <label>Não preencher: <input name="bot-field" /></label>
+                      </p>
+                    <div class="form-group">
+                        <input type="text" name="nome" placeholder="Seu nome" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Seu e-mail" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Inscrever-me</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="parceiros" class="parceiros">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-right"><span>Parceiros</span> e Apoios</h2>
+            <div class="parceiros-grid">
+                <div class="parceiro-item" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-school"></i>
+                    <h4>Direcção do Colégio Girassol</h4>
+                    <p>Apoio</p>
+                </div>
+                <div class="parceiro-item" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-camera"></i>
+                    <h4>Impacto Visual</h4>
+                    <p>Parceiro</p>
+                    <small>Transformamos imagem em resultado</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contactos" class="contactos">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-left"><span>Contactos</span></h2>
+            <div class="contactos-grid">
+                <div class="contacto-item" data-aos="flip-up" data-aos-delay="100">
+                    <i class="fas fa-phone-alt"></i>
+                    <p>+244 922 930 900</p>
+                </div>
+                <div class="contacto-item" data-aos="flip-up" data-aos-delay="200">
+                    <i class="fas fa-phone-alt"></i>
+                    <p>+244 938 990 416</p>
+                </div>
+                <div class="contacto-item" data-aos="flip-up" data-aos-delay="300">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Avenida Luther Rescova, Rotunda da Camama<br>Complexo Escolar Privado Girassol Polo 2</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <div class="footer-copyright">
+                    &copy; 2025 VES – Visionary Engineering Student. Todos os direitos reservados.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" title="Voltar ao topo"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
